@@ -5,13 +5,12 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.card}>
         <Image
-          source={{ uri: 'https://i.pravatar.cc/300' }}
+          source={{ uri: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300' }}
           style={styles.avatar}
         />
         <Text style={styles.name}>Laura Martínez</Text>
         <Text style={styles.job}>Diseñadora UX/UI</Text>
 
-        {/* Modificación solicitada: tres estadísticas alineadas en fila */}
         <View style={styles.stats}>
           <View style={styles.stat}>
             <Text style={styles.number}>24</Text>
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 110,
     height: 110,
-    borderRadius: 55, // Avatar circular
+    borderRadius: 55,
   },
   name: {
     marginTop: 18,

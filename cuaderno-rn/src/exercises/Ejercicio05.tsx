@@ -1,32 +1,24 @@
-import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-export default function Ejercicio05() {
+export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <Image
-          source={{ uri: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600' }}
-          style={styles.image}
-        />
+        <Image source={{ uri: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600' }} style={styles.image} />
 
         <View style={styles.content}>
-          <View style={styles.headerRow}>
+          <View style={styles.badgeRow}>
             <Text style={styles.category}>TECNOLOGÍA</Text>
-            {/* Reto: Añade una etiqueta "OFERTA" situada antes del nombre del producto */}
             <View style={styles.offerBadge}>
-              <Text style={styles.offerText}>OFERTA -20%</Text>
+              <Text style={styles.offerText}>OFERTA</Text>
             </View>
           </View>
 
-          <Text style={styles.title}>Auriculares Wireless Pro</Text>
-          <Text style={styles.rating}>⭐ 4.8 (124 reseñas)</Text>
+          <Text style={styles.title}>Auriculares Wireless</Text>
+          <Text style={styles.rating}>⭐ 4.8</Text>
 
           <View style={styles.bottom}>
-            <View>
-              <Text style={styles.oldPrice}>109,99 €</Text>
-              <Text style={styles.price}>89,99 €</Text>
-            </View>
+            <Text style={styles.price}>89,99 €</Text>
             <Pressable style={styles.button}>
               <Text style={styles.buttonText}>AÑADIR</Text>
             </Pressable>
@@ -48,11 +40,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOpacity: 0.08,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 14,
-    elevation: 4,
   },
   image: {
     width: '100%',
@@ -61,69 +48,53 @@ const styles = StyleSheet.create({
   content: {
     padding: 20,
   },
-  headerRow: {
+  badgeRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 6,
   },
   category: {
     color: '#2563eb',
     fontWeight: 'bold',
     fontSize: 12,
-    letterSpacing: 0.5,
   },
   offerBadge: {
-    backgroundColor: '#ef4444',
+    backgroundColor: '#fee2e2',
     paddingHorizontal: 8,
     paddingVertical: 3,
-    borderRadius: 6,
+    borderRadius: 12,
   },
   offerText: {
-    color: 'white',
+    color: '#b91c1c',
     fontSize: 11,
     fontWeight: 'bold',
   },
   title: {
-    marginTop: 4,
+    marginTop: 6,
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#0f172a',
   },
   rating: {
-    marginTop: 8,
-    fontSize: 14,
-    color: '#64748b',
+    marginTop: 10,
   },
   bottom: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 20,
-    paddingTop: 16,
-    borderTopWidth: 1,
-    borderTopColor: '#f1f5f9',
-  },
-  oldPrice: {
-    fontSize: 14,
-    color: '#94a3b8',
-    textDecorationLine: 'line-through',
+    marginTop: 24,
   },
   price: {
-    fontSize: 26,
+    fontSize: 25,
     fontWeight: 'bold',
-    color: '#0f172a',
   },
   button: {
     backgroundColor: '#111827',
     paddingVertical: 12,
-    paddingHorizontal: 22,
-    borderRadius: 12,
+    paddingHorizontal: 18,
+    borderRadius: 10,
   },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 14,
-    letterSpacing: 0.5,
   },
 });

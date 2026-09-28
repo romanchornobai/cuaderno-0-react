@@ -5,7 +5,6 @@ export default function App() {
     <ScrollView style={styles.container}>
       <Text style={styles.header}>Noticias</Text>
 
-      {/* Modificación solicitada: 4ª noticia reutilizando NewsCard */}
       <NewsCard category="TECNOLOGÍA" title="La IA transforma el desarrollo de software" />
       <NewsCard category="MÓVIL" title="React Native continúa evolucionando" />
       <NewsCard category="CLOUD" title="Las arquitecturas cloud ganan protagonismo" />

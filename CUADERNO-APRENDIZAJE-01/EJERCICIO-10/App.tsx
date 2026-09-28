@@ -6,7 +6,6 @@ export default function App() {
       <Text style={styles.greeting}>Buenos días,</Text>
       <Text style={styles.user}>Laura 👋</Text>
 
-      {/* Modificación solicitada: objetivo 8.200 pasos con barra al 82% */}
       <View style={styles.goalCard}>
         <Text style={styles.goalLabel}>OBJETIVO DIARIO</Text>
         <Text style={styles.steps}>8.200</Text>
@@ -59,7 +58,7 @@ function Activity({ title, detail }: { title: string; detail: string }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#052e16', // Paleta fitness verde bosque
+    backgroundColor: '#052e16',
     paddingHorizontal: 20,
   },
   greeting: {
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   progress: {
-    width: '82%', // 82% correspondiente a 8.200 pasos
+    width: '82%',
     height: '100%',
     backgroundColor: '#4ade80',
   },

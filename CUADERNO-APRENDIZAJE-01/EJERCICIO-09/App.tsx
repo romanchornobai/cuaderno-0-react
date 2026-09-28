@@ -24,7 +24,6 @@ export default function App() {
         </View>
       </View>
 
-      {/* Modificación solicitada: movimiento positivo formateado en verde */}
       <Text style={styles.sectionTitle}>Últimos movimientos</Text>
       <Movement title="Nómina" date="20 septiembre" amount="+2.340 €" isPositive />
       <Movement title="Supermercado" date="Hoy" amount="-42,80 €" />

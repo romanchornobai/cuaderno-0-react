@@ -6,7 +6,6 @@ export default function App() {
       <Text style={styles.title}>Dashboard</Text>
       <Text style={styles.subtitle}>Resumen del negocio</Text>
 
-      {/* Modificación solicitada: quinta tarjeta (Tickets) que pasa a una nueva fila */}
       <View style={styles.grid}>
         <Metric title="Ventas" value="12.450 €" change="+12%" />
         <Metric title="Clientes" value="348" change="+8%" />

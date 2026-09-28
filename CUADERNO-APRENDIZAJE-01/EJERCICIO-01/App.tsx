@@ -5,7 +5,6 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.title}>React Native</Text>
       <Text style={styles.subtitle}>Mi primera pantalla</Text>
-      {/* Modificación solicitada: tercera línea con Curso 2026/27 */}
       <Text style={styles.course}>Curso 2026/27</Text>
     </View>
   );

@@ -1,6 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
-// Modificación solicitada: 8 productos en el array
 const products = [
   { id: '1', icon: '⌨️', name: 'Teclado', price: '59 €' },
   { id: '2', icon: '🖱️', name: 'Ratón', price: '39 €' },

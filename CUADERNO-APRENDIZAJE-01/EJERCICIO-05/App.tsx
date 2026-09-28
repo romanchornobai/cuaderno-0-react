@@ -4,10 +4,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <Image source={{ uri: 'https://picsum.photos/600/400' }} style={styles.image} />
+        <Image source={{ uri: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600' }} style={styles.image} />
 
         <View style={styles.content}>
-          {/* Modificación solicitada: etiqueta de OFERTA situada antes del nombre */}
           <View style={styles.badgeRow}>
             <Text style={styles.category}>TECNOLOGÍA</Text>
             <View style={styles.offerBadge}>

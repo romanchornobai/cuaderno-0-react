@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* Modificación solicitada: variante con paleta cálida (naranja/ámbar) */}
       <View style={styles.card}>
         <Text style={styles.title}>¡Bienvenido!</Text>
         <Text style={styles.subtitle}>Diseño de interfaces con React Native</Text>
@@ -23,7 +22,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eef2f7',
   },
   card: {
-    backgroundColor: '#fff7ed', // Fondo cálido modificado
+    backgroundColor: '#fff7ed',
     padding: 28,
     borderRadius: 20,
     borderWidth: 1,
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#9a3412', // Color de título modificado
+    color: '#9a3412',
   },
   subtitle: {
     marginTop: 10,
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 24,
-    backgroundColor: '#ea580c', // Botón naranja modificado
+    backgroundColor: '#ea580c',
     padding: 15,
     borderRadius: 12,
   },

@@ -13,7 +13,6 @@ export default function App() {
         <Text style={styles.buttonText}>INICIAR SESIÓN</Text>
       </Pressable>
 
-      {/* Modificación solicitada: texto inferior centrado */}
       <Text style={styles.register}>¿No tienes cuenta? Regístrate</Text>
     </View>
   );

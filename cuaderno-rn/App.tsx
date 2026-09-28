@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, ScrollView, Pressable, SafeAreaView, Platform } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-// Importación de todos los ejercicios del Cuaderno 0
 import Ejercicio01 from './src/exercises/Ejercicio01';
 import Ejercicio02 from './src/exercises/Ejercicio02';
 import Ejercicio03 from './src/exercises/Ejercicio03';
@@ -13,73 +12,47 @@ import Ejercicio07 from './src/exercises/Ejercicio07';
 import Ejercicio08 from './src/exercises/Ejercicio08';
 import Ejercicio09 from './src/exercises/Ejercicio09';
 import Ejercicio10 from './src/exercises/Ejercicio10';
-import QuizRepaso from './src/exercises/QuizRepaso';
 
-interface ExerciseItem {
-  id: number | string;
-  tabLabel: string;
-  title: string;
-  level: string;
-  component: React.ComponentType;
-}
-
-const exercisesList: ExerciseItem[] = [
-  { id: 1, tabLabel: '01. Pantalla', title: '01 · Mi primera pantalla', level: 'Nivel 1', component: Ejercicio01 },
-  { id: 2, tabLabel: '02. Tarjeta', title: '02 · Tarjeta de bienvenida', level: 'Nivel 2', component: Ejercicio02 },
-  { id: 3, tabLabel: '03. Perfil', title: '03 · Ficha de perfil', level: 'Nivel 3', component: Ejercicio03 },
-  { id: 4, tabLabel: '04. Acceso', title: '04 · Pantalla de acceso', level: 'Nivel 4', component: Ejercicio04 },
-  { id: 5, tabLabel: '05. Producto', title: '05 · Tarjeta de producto', level: 'Nivel 5', component: Ejercicio05 },
-  { id: 6, tabLabel: '06. Métricas', title: '06 · Dashboard de métricas', level: 'Nivel 6', component: Ejercicio06 },
-  { id: 7, tabLabel: '07. Noticias', title: '07 · Feed de noticias', level: 'Nivel 7', component: Ejercicio07 },
-  { id: 8, tabLabel: '08. Catálogo', title: '08 · Catálogo con FlatList', level: 'Nivel 8', component: Ejercicio08 },
-  { id: 9, tabLabel: '09. Banca', title: '09 · Interfaz bancaria', level: 'Nivel 9', component: Ejercicio09 },
-  { id: 10, tabLabel: '10. Fitness', title: '10 · Proyecto final: Fitness', level: 'Nivel 10', component: Ejercicio10 },
-  { id: 'quiz', tabLabel: '✓ Repaso (Quiz)', title: 'Repaso Final · 20 Preguntas', level: 'Autoevaluación', component: QuizRepaso },
+const exerciseList = [
+  { id: 1, label: '01. Pantalla', title: 'Ejercicio 01 · Mi primera pantalla', Component: Ejercicio01 },
+  { id: 2, label: '02. Tarjeta', title: 'Ejercicio 02 · Tarjeta de bienvenida', Component: Ejercicio02 },
+  { id: 3, label: '03. Perfil', title: 'Ejercicio 03 · Ficha de perfil', Component: Ejercicio03 },
+  { id: 4, label: '04. Acceso', title: 'Ejercicio 04 · Pantalla de acceso', Component: Ejercicio04 },
+  { id: 5, label: '05. Producto', title: 'Ejercicio 05 · Tarjeta de producto', Component: Ejercicio05 },
+  { id: 6, label: '06. Métricas', title: 'Ejercicio 06 · Dashboard de métricas', Component: Ejercicio06 },
+  { id: 7, label: '07. Noticias', title: 'Ejercicio 07 · Feed de noticias', Component: Ejercicio07 },
+  { id: 8, label: '08. Catálogo', title: 'Ejercicio 08 · Catálogo con FlatList', Component: Ejercicio08 },
+  { id: 9, label: '09. Banca', title: 'Ejercicio 09 · Interfaz bancaria', Component: Ejercicio09 },
+  { id: 10, label: '10. Fitness', title: 'Ejercicio 10 · Proyecto final: Fitness', Component: Ejercicio10 },
 ];
 
 export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const currentExercise = exercisesList[currentIndex];
-  const ActiveComponent = currentExercise.component;
-
-  const handlePrev = () => {
-    if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
-  };
-
-  const handleNext = () => {
-    if (currentIndex < exercisesList.length - 1) setCurrentIndex(currentIndex + 1);
-  };
+  const current = exerciseList[currentIndex];
+  const ActiveComponent = current.Component;
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="light" />
 
-      {/* Barra de cabecera con navegación entre ejercicios */}
-      <View style={styles.topNavigation}>
-        <View style={styles.titleRow}>
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>CUADERNO 0 · EXPO</Text>
-          </View>
-          <Text style={styles.headerTitle}>{currentExercise.title}</Text>
-        </View>
-
-        {/* Scroll horizontal con pestañas de todos los ejercicios */}
+      {/* Barra superior de navegación */}
+      <View style={styles.topBar}>
+        <Text style={styles.topTitle}>{current.title}</Text>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.tabsScroll}
+          contentContainerStyle={styles.tabs}
         >
-          {exercisesList.map((item, index) => {
-            const isActive = index === currentIndex;
+          {exerciseList.map((item, index) => {
+            const active = index === currentIndex;
             return (
               <Pressable
-                key={String(item.id)}
-                style={[styles.tabButton, isActive && styles.tabButtonActive]}
+                key={item.id}
+                style={[styles.tab, active && styles.tabActive]}
                 onPress={() => setCurrentIndex(index)}
               >
-                <Text style={[styles.tabButtonText, isActive && styles.tabButtonTextActive]}>
-                  {item.tabLabel}
+                <Text style={[styles.tabText, active && styles.tabTextActive]}>
+                  {item.label}
                 </Text>
               </Pressable>
             );
@@ -87,33 +60,31 @@ export default function App() {
         </ScrollView>
       </View>
 
-      {/* Pantalla del ejercicio activo */}
-      <View style={styles.screenContainer}>
+      {/* Pantalla del ejercicio limpio */}
+      <View style={styles.screen}>
         <ActiveComponent />
       </View>
 
-      {/* Barra inferior con botones Anterior / Siguiente */}
+      {/* Barra inferior */}
       <View style={styles.bottomBar}>
         <Pressable
-          style={[styles.navBtn, currentIndex === 0 && styles.navBtnDisabled]}
-          onPress={handlePrev}
+          style={[styles.btn, currentIndex === 0 && styles.btnDisabled]}
+          onPress={() => currentIndex > 0 && setCurrentIndex(currentIndex - 1)}
           disabled={currentIndex === 0}
         >
-          <Text style={[styles.navBtnText, currentIndex === 0 && styles.navBtnTextDisabled]}>
+          <Text style={[styles.btnText, currentIndex === 0 && styles.btnTextDisabled]}>
             ← Anterior
           </Text>
         </Pressable>
 
-        <Text style={styles.indicatorText}>
-          {currentIndex + 1} de {exercisesList.length}
-        </Text>
+        <Text style={styles.counter}>{currentIndex + 1} de {exerciseList.length}</Text>
 
         <Pressable
-          style={[styles.navBtn, styles.navBtnPrimary, currentIndex === exercisesList.length - 1 && styles.navBtnDisabled]}
-          onPress={handleNext}
-          disabled={currentIndex === exercisesList.length - 1}
+          style={[styles.btn, styles.btnNext, currentIndex === exerciseList.length - 1 && styles.btnDisabled]}
+          onPress={() => currentIndex < exerciseList.length - 1 && setCurrentIndex(currentIndex + 1)}
+          disabled={currentIndex === exerciseList.length - 1}
         >
-          <Text style={[styles.navBtnText, styles.navBtnTextPrimary, currentIndex === exercisesList.length - 1 && styles.navBtnTextDisabled]}>
+          <Text style={[styles.btnText, styles.btnTextNext, currentIndex === exerciseList.length - 1 && styles.btnTextDisabled]}>
             Siguiente →
           </Text>
         </Pressable>
@@ -128,99 +99,78 @@ const styles = StyleSheet.create({
     backgroundColor: '#0f172a',
     paddingTop: Platform.OS === 'android' ? 30 : 0,
   },
-  topNavigation: {
+  topBar: {
     backgroundColor: '#0f172a',
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#1e293b',
   },
-  titleRow: {
+  topTitle: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: 'bold',
     paddingHorizontal: 16,
     marginBottom: 8,
   },
-  badge: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#1e293b',
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    borderRadius: 6,
-    marginBottom: 4,
-  },
-  badgeText: {
-    color: '#38bdf8',
-    fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 0.5,
-  },
-  headerTitle: {
-    color: '#ffffff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  tabsScroll: {
+  tabs: {
     paddingHorizontal: 12,
     gap: 8,
   },
-  tabButton: {
+  tab: {
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 16,
     backgroundColor: '#1e293b',
   },
-  tabButtonActive: {
+  tabActive: {
     backgroundColor: '#3b82f6',
   },
-  tabButtonText: {
+  tabText: {
     color: '#94a3b8',
     fontSize: 12,
     fontWeight: '600',
   },
-  tabButtonTextActive: {
+  tabTextActive: {
     color: '#ffffff',
-    fontWeight: 'bold',
   },
-  screenContainer: {
+  screen: {
     flex: 1,
-    backgroundColor: '#f8fafc',
   },
   bottomBar: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 10,
     backgroundColor: '#0f172a',
     borderTopWidth: 1,
     borderTopColor: '#1e293b',
   },
-  navBtn: {
+  btn: {
     paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 10,
+    paddingHorizontal: 14,
+    borderRadius: 8,
     backgroundColor: '#1e293b',
   },
-  navBtnPrimary: {
+  btnNext: {
     backgroundColor: '#3b82f6',
   },
-  navBtnDisabled: {
-    backgroundColor: '#1e293b',
-    opacity: 0.4,
+  btnDisabled: {
+    opacity: 0.3,
   },
-  navBtnText: {
-    color: '#e2e8f0',
+  btnText: {
+    color: '#cbd5e1',
     fontSize: 13,
     fontWeight: '600',
   },
-  navBtnTextPrimary: {
+  btnTextNext: {
     color: '#ffffff',
   },
-  navBtnTextDisabled: {
+  btnTextDisabled: {
     color: '#64748b',
   },
-  indicatorText: {
+  counter: {
     color: '#94a3b8',
     fontSize: 12,
-    fontWeight: '500',
   },
 });
