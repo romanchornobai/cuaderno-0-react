@@ -25,16 +25,3 @@ Repositorio de ejercicios del **Cuaderno 0 de React Native con Expo** (Configura
 Cada carpeta de ejercicio contiene:
 - `App.tsx`: Código fuente con el ejercicio y la modificación visual solicitada.
 - `README.md`: Reflexión sobre lo aprendido, respuesta a la pregunta de comprensión y explicación de los cambios.
-
----
-
-## 🚀 Cómo Ejecutar el Proyecto
-
-Para probar visualmente los ejercicios con Expo:
-
-```bash
-cd cuaderno-rn
-npm install
-npx expo start --web
-```
-Abre en tu navegador `http://localhost:8081` para ver la interfaz interactiva.
